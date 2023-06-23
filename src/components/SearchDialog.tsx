@@ -22,6 +22,7 @@ export function SearchDialog() {
 
   React.useEffect(() => {
     console.log("open", query);
+    console.log("open", process.env.NEXT_PUBLIC_OPENAI_KEY);
     // const down = (e: KeyboardEvent) => {
     //   if (e.key === 'k' && e.metaKey) {
     //     setOpen(true)

@@ -11,9 +11,9 @@ import {
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { ApplicationError, UserError } from '@/lib/errors'
 
-const openAiKey = process.env.OPENAI_KEY
+const openAiKey = process.env.NEXT_PUBLIC_OPENAI_KEY
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+const supabaseServiceKey = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY
 
 const config = new Configuration({
   apiKey: openAiKey,
@@ -25,7 +25,7 @@ export const runtime = 'edge'
 export default async function handler(req: NextRequest) {
   try {
     if (!openAiKey) {
-      throw new ApplicationError('Missing environment variable OPENAI_KEY')
+      throw new ApplicationError('Missing environment variable NEXT_PUBLIC_OPENAI_KEY')
     }
 
     if (!supabaseUrl) {
@@ -33,7 +33,7 @@ export default async function handler(req: NextRequest) {
     }
 
     if (!supabaseServiceKey) {
-      throw new ApplicationError('Missing environment variable SUPABASE_SERVICE_ROLE_KEY')
+      throw new ApplicationError('Missing environment variable NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY')
     }
 
     const requestData = await req.json()

@@ -274,17 +274,17 @@ async function generateEmbeddings() {
   const shouldRefresh = argv.refresh
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    !process.env.OPENAI_KEY
+    !process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY ||
+    !process.env.NEXT_PUBLIC_OPENAI_KEY
   ) {
     return console.log(
-      'Environment variables NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and OPENAI_KEY are required: skipping embeddings generation'
+      'Environment variables NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY, and NEXT_PUBLIC_OPENAI_KEY are required: skipping embeddings generation'
     )
   }
 
   const supabaseClient = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY,
     {
       auth: {
         persistSession: false,
@@ -420,7 +420,7 @@ async function generateEmbeddings() {
 
         try {
           const configuration = new Configuration({
-            apiKey: process.env.OPENAI_KEY,
+            apiKey: process.env.NEXT_PUBLIC_OPENAI_KEY,
           })
           const openai = new OpenAIApi(configuration)
 
