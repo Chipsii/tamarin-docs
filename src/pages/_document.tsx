@@ -1,3 +1,4 @@
+import { SearchDialog } from '../components/SearchDialog';
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 
 class MyDocument extends Document {
